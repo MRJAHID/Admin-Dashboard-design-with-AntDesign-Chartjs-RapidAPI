@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './datatable.scss';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../datatablesource';
 
@@ -16,19 +16,21 @@ const Datatable = () => {
          field: 'action',
          headerName: 'Action',
          width: 200,
-         renderCell: (params) => (
-            <div className="cellAction">
-               <Link to="/users/test" style={{ textDecoration: 'none' }}>
-                  <div className="viewButton">View</div>
-               </Link>
-               {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-               <div
-                  className="deleteButton"
-                  onClick={() => handleDelete(params.row.id)}>
-                  Delete
+         renderCell: (params) => {
+            return (
+               <div className="cellAction">
+                  <Link to="/users/test" style={{ textDecoration: 'none' }}>
+                     <div className="viewButton">View</div>
+                  </Link>
+                  {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+                  <div
+                     className="deleteButton"
+                     onClick={() => handleDelete(params.row.id)}>
+                     Delete
+                  </div>
                </div>
-            </div>
-         ),
+            );
+         },
       },
    ];
    return (
